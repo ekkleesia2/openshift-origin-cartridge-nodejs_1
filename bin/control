@@ -21,7 +21,7 @@ function status() {
 
 function start() {
   echo "Starting NodeJS cartridge"
-
+sh ${OPENSHIFT_REPO_DIR}scripts/activate
   if is_cartridge_running; then
     echo "Application is already running"
     return 0
@@ -82,7 +82,7 @@ function start() {
   # ensure file is created before printing it to show startup status
   sleep 2
 
-sh ${OPENSHIFT_REPO_DIR}scripts/activate
+
 
   popd > /dev/null
   if [ -n "${cart_pid}" ]; then
@@ -94,7 +94,7 @@ sh ${OPENSHIFT_REPO_DIR}scripts/activate
 
 function stop() {
     echo "Stopping NodeJS cartridge"
-
+sh ${OPENSHIFT_REPO_DIR}scripts/desactivate
     if cartridge_pidfile_exists; then
       cart_pid=$(cat $OPENSHIFT_NODEJS_PID_DIR/cartridge.pid)
       running_cart_pid=$(cartridge_pid)
