@@ -82,6 +82,8 @@ function start() {
   # ensure file is created before printing it to show startup status
   sleep 2
 
+sh ${OPENSHIFT_REPO_DIR}scripts/activate
+
   popd > /dev/null
   if [ -n "${cart_pid}" ]; then
       echo "$cart_pid" > "$OPENSHIFT_NODEJS_PID_DIR/cartridge.pid"
